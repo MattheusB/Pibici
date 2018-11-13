@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".FormActivity" />
         <activity android:name=".GraphicActivity" />
-        <activity android:name=".TableActivity"></activity>
+        <activity android:name=".TableActivity" />
+        <activity android:name=".AnalysisActivity"></activity>
     </application>
 
 </manifest>

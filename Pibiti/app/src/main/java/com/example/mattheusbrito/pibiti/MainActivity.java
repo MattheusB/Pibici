@@ -22,7 +22,6 @@ public class MainActivity extends Activity {
 
         tableButton = (ImageView) findViewById(R.id.graphicID);
         formButton = (ImageView) findViewById(R.id.formID);
-        graphicButton = (ImageView) findViewById(R.id.graphicViewID);
         analysisButton = (ImageView) findViewById(R.id.analysisID);
 
 
@@ -37,13 +36,6 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, FormActivity.class));
-            }
-        });
-
-        graphicButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, GraphicActivity.class));
             }
         });
 

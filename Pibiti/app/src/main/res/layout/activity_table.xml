@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TableActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:fontFamily="serif"
+        android:text="Lançamentos"
+        android:gravity="center"/>
+
+    <TableLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/table_row1"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/table1ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="Indicador1"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/table2ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="Indicador2"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/table3ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="Indicador3"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/table4ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="Indicador4"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/table5ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="Indicador5"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/table6ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="Indicador6"
+                android:textColor="#000" />
+
+        </TableRow>
+        <View
+            android:layout_height="3dip"
+            android:layout_width="match_parent"
+            android:background="#ff0000"/>
+
+    </TableLayout>
+
+</android.support.v7.widget.LinearLayoutCompat>

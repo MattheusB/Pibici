@@ -10,7 +10,6 @@ public class MainActivity extends Activity {
 
     private ImageView tableButton;
     private ImageView formButton;
-    private ImageView graphicButton;
     private ImageView analysisButton;
 
 
@@ -20,7 +19,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tableButton = (ImageView) findViewById(R.id.graphicID);
+        tableButton = (ImageView) findViewById(R.id.tableID);
         formButton = (ImageView) findViewById(R.id.formID);
         analysisButton = (ImageView) findViewById(R.id.analysisID);
 

@@ -1,9 +1,10 @@
 package com.example.mattheusbrito.pibiti;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class TableActivity extends AppCompatActivity {
+public class TableActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

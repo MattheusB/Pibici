@@ -10,6 +10,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 public class FormActivity extends Activity {
 
@@ -71,7 +72,42 @@ public class FormActivity extends Activity {
 
 
                 AsyncHttpClient client = new AsyncHttpClient();
-                
+
+                client.post(RECORDS_ENDPOINT, params, new JsonHttpResponseHandler(){
+
+                    @Override
+                    public void onSuccess(
+                            int statusCode,
+                            cz.msebera.android.httpclient.Header[] headers,
+                            JSONArray response) {
+                        super.onSuccess(statusCode, headers, response);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                indicator1.setText("");
+                                indicator2.setText("");
+                                indicator3.setText("");
+                                indicator4.setText("");
+                                indicator5.setText("");
+                                indicator6.setText("");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(
+                            int statusCode,
+                            cz.msebera.android.httpclient.Header[] headers,
+                            String responseString,
+                            Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
+                        Toast.makeText(
+                                getApplicationContext(), "Couldn't Post!",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                });
+
 
             }
         });

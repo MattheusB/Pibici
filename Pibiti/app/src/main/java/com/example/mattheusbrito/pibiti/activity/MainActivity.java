@@ -1,10 +1,12 @@
-package com.example.mattheusbrito.pibiti;
+package com.example.mattheusbrito.pibiti.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.mattheusbrito.pibiti.R;
 
 public class MainActivity extends Activity {
 

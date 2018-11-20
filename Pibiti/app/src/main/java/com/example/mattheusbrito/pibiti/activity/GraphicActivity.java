@@ -1,14 +1,16 @@
-package com.example.mattheusbrito.pibiti;
+package com.example.mattheusbrito.pibiti.activity;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class TableActivity extends Activity {
+import com.example.mattheusbrito.pibiti.R;
+
+public class GraphicActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table);
+        setContentView(R.layout.activity_graphic);
     }
 }

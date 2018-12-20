@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "648017108785",
+    "firebase_url": "https://pibiti-dad75.firebaseio.com",
+    "project_id": "pibiti-dad75",
+    "storage_bucket": "pibiti-dad75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648017108785:android:38b9b58fba9f99e3",
+        "android_client_info": {
+          "package_name": "com.example.mattheusbrito.pibiti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648017108785-0p0uigui7ir37hnlguupc17u7posf71s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mattheusbrito.pibiti",
+            "certificate_hash": "7d5dfa242a36fe95c41cfc4442b1a9bf5b427f8f"
+          }
+        },
+        {
+          "client_id": "648017108785-au71264ljehpuhnlr6ckc99aiiprt2d5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwpxtqKj1vDGQeOqdr36ZUNVd3sJsjcys"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648017108785-au71264ljehpuhnlr6ckc99aiiprt2d5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -14,6 +14,8 @@ import com.example.mattheusbrito.pibiti.mock.Mock;
 
 public class FormActivity extends Activity {
 
+    public final static String EXTRA_MESSAGE = "com.example.mattheusbrito.pibiti.MESSAGE";
+
     private EditText indicator1;
     private EditText indicator2;
     private EditText indicator3;
@@ -25,7 +27,6 @@ public class FormActivity extends Activity {
 
     private Mock mock = new Mock();
 
-    private static final String RECORDS_ENDPOINT = "http://localhost:3000/records";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,35 +45,33 @@ public class FormActivity extends Activity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addRelease();
-                startActivity(new Intent(FormActivity.this, TableActivity.class));
-            }
-
-            private void addRelease(){
                 String value1 = indicator1.getText().toString();
                 String value2 = indicator2.getText().toString();
                 String value3 = indicator3.getText().toString();
-                String value4 = indicator3.getText().toString();
-                String value5 = indicator3.getText().toString();
-                String value6 = indicator3.getText().toString();
+                String value4 = indicator4.getText().toString();
+                String value5 = indicator5.getText().toString();
+                String value6 = indicator6.getText().toString();
 
-                mock.addRelease(value1, value2, value3, value4, value5, value6);
-                System.out.println(mock.toString());
+                Intent intent = new Intent(FormActivity.this, TableActivity.class);
 
-                Bundle b = new Bundle();
-                b.putSerializable("key", mock);
+                intent.putExtra("VALUE1", value1);
+                intent.putExtra("VALUE2", value2);
+                intent.putExtra("VALUE3", value3);
+                intent.putExtra("VALUE4", value4);
+                intent.putExtra("VALUE5", value5);
+                intent.putExtra("VALUE6", value6);
 
-                Intent i = new Intent(FormActivity.this, TableActivity.class);
-                i.putExtra("Mock", b);
+                startActivity(intent);
+                }
+            });
 
-            }
-
-
-        });
-
-
-
+        }
 
 
-    }
+
+
+
+
+
+
 }

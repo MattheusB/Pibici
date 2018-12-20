@@ -7,12 +7,20 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.mattheusbrito.pibiti.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends Activity {
+
+    private DatabaseReference referenceFireBase = FirebaseDatabase.getInstance().getReference();
 
     private ImageView tableButton;
     private ImageView formButton;
     private ImageView analysisButton;
+
+
+
+
 
 
 

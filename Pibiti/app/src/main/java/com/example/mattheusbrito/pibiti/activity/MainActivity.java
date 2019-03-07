@@ -19,11 +19,6 @@ public class MainActivity extends Activity {
     private ImageView analysisButton;
 
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

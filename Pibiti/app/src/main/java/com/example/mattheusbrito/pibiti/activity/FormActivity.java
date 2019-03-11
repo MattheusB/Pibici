@@ -42,28 +42,28 @@ public class FormActivity extends Activity {
 
         sendButton = (Button) findViewById(R.id.sendButtonID);
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String value1 = indicator1.getText().toString();
-                String value2 = indicator2.getText().toString();
-                String value3 = indicator3.getText().toString();
-                String value4 = indicator4.getText().toString();
-                String value5 = indicator5.getText().toString();
-                String value6 = indicator6.getText().toString();
+        }
 
-                Intent intent = new Intent(FormActivity.this, TableActivity.class);
+        public void sendIndicators(View view){
 
-                intent.putExtra("VALUE1", value1);
-                intent.putExtra("VALUE2", value2);
-                intent.putExtra("VALUE3", value3);
-                intent.putExtra("VALUE4", value4);
-                intent.putExtra("VALUE5", value5);
-                intent.putExtra("VALUE6", value6);
+        Intent intent = new Intent(this, TableActivity.class);
 
-                startActivity(intent);
-                }
-            });
+        String indicator1Value = indicator1.getText().toString();
+        String indicator2Value = indicator2.getText().toString();
+        String indicator3Value = indicator3.getText().toString();
+        String indicator4Value = indicator4.getText().toString();
+        String indicator5Value = indicator5.getText().toString();
+        String indicator6Value = indicator6.getText().toString();
+
+
+        intent.putExtra(EXTRA_MESSAGE, indicator1Value);
+        intent.putExtra(EXTRA_MESSAGE, indicator2Value);
+        intent.putExtra(EXTRA_MESSAGE, indicator3Value);
+        intent.putExtra(EXTRA_MESSAGE, indicator4Value);
+        intent.putExtra(EXTRA_MESSAGE, indicator5Value);
+        intent.putExtra(EXTRA_MESSAGE, indicator6Value);
+
+        startActivity(intent);
 
         }
 

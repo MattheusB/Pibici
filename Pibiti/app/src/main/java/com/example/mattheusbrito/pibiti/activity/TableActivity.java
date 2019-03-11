@@ -17,32 +17,37 @@ import java.util.ArrayList;
 
 public class TableActivity extends Activity {
 
-    private TextView v1;
-    private TextView v2;
-    private TextView v3;
-    private TextView v4;
-    private TextView v5;
-    private TextView v6;
+    private TextView viewIndicator1 = new TextView(this);
+    private TextView viewIndicator2 = new TextView(this);
+    private TextView viewIndicator3 = new TextView(this);
+    private TextView viewIndicator4 = new TextView(this);
+    private TextView viewIndicator5 = new TextView(this);
+    private TextView viewIndicator6 = new TextView(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table);
-
-        v1 = (TextView) findViewById(R.id.value1ID);
-        v2 = (TextView) findViewById(R.id.value2ID);
-        v3 = (TextView) findViewById(R.id.value3ID);
-        v4 = (TextView) findViewById(R.id.value4ID);
-        v5 = (TextView) findViewById(R.id.value5ID);
-        v6 = (TextView) findViewById(R.id.value6ID);
-
-        v1.setText(getIntent().getStringExtra("VALUE1"));
-        v2.setText(getIntent().getStringExtra("VALUE2"));
-        v3.setText(getIntent().getStringExtra("VALUE3"));
-        v4.setText(getIntent().getStringExtra("VALUE4"));
-        v5.setText(getIntent().getStringExtra("VALUE5"));
-        v6.setText(getIntent().getStringExtra("VALUE6"));
 
 
+        Intent intent = getIntent();
+
+        String indicator1Value = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
+        String indicator2Value = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
+        String indicator3Value = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
+        String indicator4Value = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
+        String indicator5Value = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
+        String indicator6Value = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
+
+
+
+
+        viewIndicator1.setText(indicator1Value);
+        viewIndicator2.setText(indicator2Value);
+        viewIndicator3.setText(indicator3Value);
+        viewIndicator4.setText(indicator4Value);
+        viewIndicator5.setText(indicator5Value);
+        viewIndicator6.setText(indicator6Value);
+
+       setContentView(R.layout.activity_table);
     }
 }

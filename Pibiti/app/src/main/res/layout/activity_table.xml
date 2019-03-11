@@ -18,7 +18,7 @@
 
 
     <TextView
-        android:id="@+id/value1ID"
+        android:id="@+id/indicatorValue1ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -34,7 +34,7 @@
 
 
     <TextView
-        android:id="@+id/value2ID"
+        android:id="@+id/indicatorValue2ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -46,10 +46,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/value1ID" />
+        app:layout_constraintTop_toBottomOf="@+id/indicatorValue1ID" />
 
     <TextView
-        android:id="@+id/value3ID"
+        android:id="@+id/indicatorValue3ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -60,11 +60,11 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/value2ID" />
+        app:layout_constraintTop_toBottomOf="@+id/indicatorValue2ID" />
 
 
     <TextView
-        android:id="@+id/value4ID"
+        android:id="@+id/indicatorValue4ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -76,12 +76,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/value3ID" />
+        app:layout_constraintTop_toBottomOf="@+id/indicatorValue3ID" />
 
 
 
     <TextView
-        android:id="@+id/value5ID"
+        android:id="@+id/indicatorValue5ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -92,12 +92,12 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/value4ID" />
+        app:layout_constraintTop_toBottomOf="@+id/indicatorValue4ID" />
 
 
 
     <TextView
-        android:id="@+id/value6ID"
+        android:id="@+id/indicatorValue6ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -108,7 +108,7 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/value5ID" />
+        app:layout_constraintTop_toBottomOf="@+id/indicatorValue5ID" />
 
 
 

@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table1ID" />
+        app:layout_constraintTop_toBottomOf="@+id/indicator1ID" />
 
     <TextView
         android:id="@+id/textView3"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/indicador3ID" />
 
     <EditText
-        android:id="@+id/table1ID"
+        android:id="@+id/indicator1ID"
         android:layout_width="352dp"
         android:layout_height="19dp"
         android:layout_marginStart="8dp"
@@ -228,7 +228,6 @@
         android:layout_marginRight="8dp"
         android:background="@android:color/holo_orange_dark"
         android:text="Lançar"
-        android:onClick="sendIndicators"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/indicator6ID" />

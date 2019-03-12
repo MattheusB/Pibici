@@ -1,18 +1,24 @@
 package com.example.mattheusbrito.pibiti.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import org.json.JSONArray;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.example.mattheusbrito.pibiti.R;
 import com.example.mattheusbrito.pibiti.mock.Mock;
 
 public class FormActivity extends Activity {
+
+    private static final String RELEASE_ENDPOINT = "http://localhost:3000/lancamentos";
 
     public final static String EXTRA_INDICATOR1 = "com.example.mattheusbrito.pibiti.INDICATOR1";
     public final static String EXTRA_INDICATOR2 = "com.example.mattheusbrito.pibiti.INDICATOR2";
@@ -66,6 +72,50 @@ public class FormActivity extends Activity {
         int indicator4Value = Integer.parseInt(indicator4.getText().toString());
         int indicator5Value = Integer.parseInt(indicator5.getText().toString());
         int indicator6Value = Integer.parseInt(indicator6.getText().toString());
+
+
+            RequestParams params = new RequestParams();
+
+            params.put("indicador1", indicator1Value);
+            params.put("indicador2", indicator2Value);
+            params.put("indicador3", indicator3Value);
+            params.put("indicador4", indicator4Value);
+
+            AsyncHttpClient client = new AsyncHttpClient();
+
+            client.post(RELEASE_ENDPOINT, params, new JsonHttpResponseHandler(){
+
+                @Override
+                public void onSuccess(
+                        int statusCode,
+                        cz.msebera.android.httpclient.Header[] headers,
+                        JSONArray response) {
+                    super.onSuccess(statusCode, headers, response);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            indicator1.setText("");
+                            indicator2.setText("");
+                            indicator3.setText("");
+                            indicator4.setText("");
+                        }
+                    });
+                }
+
+                @Override
+                public void onFailure(
+                        int statusCode,
+                        cz.msebera.android.httpclient.Header[] headers,
+                        String responseString,
+                        Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+                    Toast.makeText(
+                            getApplicationContext(), "Não pode ser lancado!",
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
+            });
+
 
 
         intent.putExtra(EXTRA_INDICATOR1, indicator1Value);

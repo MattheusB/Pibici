@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.TableActivity">
@@ -17,62 +18,56 @@
         android:textSize="20sp" />
 
 
-    <TextView
-        android:id="@+id/indicatorValue1ID"
+    <TableLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/table_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@id/releaseID"
-        />
+        android:layout_height="wrap_content">
 
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/table_row1"
+            android:padding="10dp">
 
-    <TextView
-        android:id="@+id/indicatorValue2ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@id/indicatorValue1ID"
-        />
+            <TextView
+                android:id="@+id/indicator_name"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:text="Indicador"/>
+            <TextView
+                android:id="@+id/partial_average"
+                android:textColor="#000"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Média Parcial"/>
+            <TextView
+                android:textColor="#000"
+                android:id="@+id/final_average"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Média Final"/>
+            <TextView
+                android:textColor="#000"
+                android:id="@+id/situation"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Situação"/>
 
-    <TextView
-        android:id="@+id/indicatorValue3ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@id/indicatorValue2ID"
-        />
+        </TableRow>
+        <View
+            android:layout_height="3dip"
+            android:layout_width="match_parent"
+            android:background="#ff0000"/>
+    </TableLayout>
 
-    <TextView
-        android:id="@+id/indicatorValue4ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@id/indicatorValue3ID"
-        />
-
-
-    <TextView
-        android:id="@+id/indicatorValue5ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@id/indicatorValue4ID"
-        />
-
-
-    <TextView
-        android:id="@+id/indicatorValue6ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@id/indicatorValue5ID"
-        />
-
-
-</RelativeLayout>
+</LinearLayout>

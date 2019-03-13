@@ -68,6 +68,13 @@
             android:layout_height="3dip"
             android:layout_width="match_parent"
             android:background="#ff0000"/>
+
+        <ListView
+            android:id="@+id/releaseListID"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="16dp">
+        </ListView>
     </TableLayout>
 
 </LinearLayout>

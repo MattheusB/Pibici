@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.example.mattheusbrito.pibiti.R;
 import com.example.mattheusbrito.pibiti.mock.Mock;
 
-public class FormActivity extends Activity {
+public class FormActivity extends Activity implements View.OnClickListener {
 
     private static final String RELEASE_ENDPOINT = "http://localhost:3000/lancamentos";
 
@@ -33,6 +33,8 @@ public class FormActivity extends Activity {
     private EditText indicator4;
     private EditText indicator5;
     private EditText indicator6;
+
+    private RecordAdapter recordAdapter;
 
     private Button sendButton;
 

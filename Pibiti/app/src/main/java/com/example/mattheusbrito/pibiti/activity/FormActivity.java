@@ -1,31 +1,36 @@
 package com.example.mattheusbrito.pibiti.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.mattheusbrito.pibiti.record.Release;
+import com.example.mattheusbrito.pibiti.record.ReleaseAdapter;
+import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
-import android.text.TextUtils;
+
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mattheusbrito.pibiti.R;
-import com.example.mattheusbrito.pibiti.mock.Mock;
+import com.pusher.client.Pusher;
+import com.pusher.client.PusherOptions;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.SubscriptionEventListener;
+
+import java.util.ArrayList;
+
 
 public class FormActivity extends Activity implements View.OnClickListener {
 
     private static final String RELEASE_ENDPOINT = "http://localhost:3000/lancamentos";
-
-    public final static String EXTRA_INDICATOR1 = "com.example.mattheusbrito.pibiti.INDICATOR1";
-    public final static String EXTRA_INDICATOR2 = "com.example.mattheusbrito.pibiti.INDICATOR2";
-    public final static String EXTRA_INDICATOR3 = "com.example.mattheusbrito.pibiti.INDICATOR3";
-    public final static String EXTRA_INDICATOR4 = "com.example.mattheusbrito.pibiti.INDICATOR4";
-    public final static String EXTRA_INDICATOR5 = "com.example.mattheusbrito.pibiti.INDICATOR5";
-    public final static String EXTRA_INDICATOR6 = "com.example.mattheusbrito.pibiti.INDICATOR6";
 
     private EditText indicator1;
     private EditText indicator2;
@@ -34,17 +39,45 @@ public class FormActivity extends Activity implements View.OnClickListener {
     private EditText indicator5;
     private EditText indicator6;
 
-    private RecordAdapter recordAdapter;
+    private ReleaseAdapter releaseAdapter;
 
     private Button sendButton;
 
-    private Mock mock = new Mock();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
+
+        releaseAdapter = new ReleaseAdapter(this, new ArrayList<Release>());
+        final ListView releasesView = (ListView) findViewById(R.id.releaseListID);
+        releasesView.setAdapter(releaseAdapter);
+
+
+        PusherOptions options = new PusherOptions();
+        options.setCluster("us2");
+
+        Pusher pusher = new Pusher("6649d90faeacdd56ad9b");
+        pusher.connect();
+
+        Channel channel = pusher.subscribe("releases");
+        channel.bind("new_release", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson = new Gson();
+                        Release release = gson.fromJson(data, Release.class);
+                        releaseAdapter.add(release);
+                        releasesView.setSelection(releaseAdapter.getCount() - 1);
+                    }
+                });
+            }
+
+        });
+
 
         indicator1 = (EditText) findViewById(R.id.indicator1ID);
         indicator2 = (EditText) findViewById(R.id.indicator2ID);
@@ -55,12 +88,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
 
         sendButton = (Button) findViewById(R.id.sendButtonID);
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendIndicators();
-            }
-        });
+        sendButton.setOnClickListener(this);
 
         }
 
@@ -119,23 +147,16 @@ public class FormActivity extends Activity implements View.OnClickListener {
             });
 
 
-
-        intent.putExtra(EXTRA_INDICATOR1, indicator1Value);
-        intent.putExtra(EXTRA_INDICATOR2, indicator2Value);
-        intent.putExtra(EXTRA_INDICATOR3, indicator3Value);
-        intent.putExtra(EXTRA_INDICATOR4, indicator4Value);
-        intent.putExtra(EXTRA_INDICATOR5, indicator5Value);
-        intent.putExtra(EXTRA_INDICATOR6, indicator6Value);
-
-        startActivity(intent);
-
         }
 
 
 
 
 
-
+    @Override
+    public void onClick(View v) {
+        sendIndicators();
+    }
 
 
 }

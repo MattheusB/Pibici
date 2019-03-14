@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/recordIndicator1"
+        android:fontFamily="serif"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:textColor="#000"
+        android:text="Indicador 1"/>
+    <TextView
+        android:id="@+id/recordIndicator2"
+        android:textColor="#000"
+        android:fontFamily="serif"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:text="Indicador2"/>
+    <TextView
+        android:textColor="#000"
+        android:id="@+id/recordIndicator3"
+        android:fontFamily="serif"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:text="Indicador 3"/>
+    <TextView
+        android:textColor="#000"
+        android:id="@+id/recordIndicator4"
+        android:fontFamily="serif"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:text="Indicador 4"/>
+</LinearLayout>

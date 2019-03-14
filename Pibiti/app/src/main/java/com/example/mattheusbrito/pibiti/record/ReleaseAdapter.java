@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.mattheusbrito.pibiti.R;
 
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class ReleaseAdapter extends BaseAdapter {
 
@@ -29,29 +30,14 @@ public class ReleaseAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        RecordViewHolder holder;
+        final LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+        view = view == null ? inflater.inflate(R.layout.release, viewGroup, false) : view;
+        final RecordViewHolder releaseViewHolder = new RecordViewHolder();
 
-        if (view ==null){
-            LayoutInflater recordInflater = (LayoutInflater)
-                    recordContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            view = recordInflater.inflate(R.layout.release, null);
-
-            holder = new RecordViewHolder();
-            holder.indicator1View = (TextView) view.findViewById(R.id.recordIndicator1);
-            holder.indicator2View = (TextView) view.findViewById(R.id.recordIndicator2);
-            holder.indicator3View = (TextView) view.findViewById(R.id.recordIndicator3);
-            holder.indicator4View = (TextView) view.findViewById(R.id.recordIndicator4);
-            view.setTag(holder);
-
-        }else {
-            holder = (RecordViewHolder) view.getTag();
-        }
+        releaseViewHolder.indicator1View = view.findViewById(R.id.recordIndicator1);
 
         Release release = (Release) getItem(i);
-        holder.indicator1View.setText(release.indicator1);
-        holder.indicator2View.setText(release.indicator2);
-        holder.indicator3View.setText(release.indicator3);
-        holder.indicator4View.setText(release.indicator4);
+        releaseViewHolder.indicator1View.setText(release.indicador1.toString());
         return view;
     }
 

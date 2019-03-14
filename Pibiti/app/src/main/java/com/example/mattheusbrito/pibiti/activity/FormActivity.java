@@ -52,7 +52,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
 
     public void sendIndicators() {
 
-        int indicator1Value = Integer.parseInt(indicator1.getText().toString());
+        String indicator1Value = indicator1.getText().toString();
         int indicator2Value = Integer.parseInt(indicator2.getText().toString());
         int indicator3Value = Integer.parseInt(indicator3.getText().toString());
         int indicator4Value = Integer.parseInt(indicator4.getText().toString());
@@ -107,6 +107,8 @@ public class FormActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         sendIndicators();
+        Intent intent = new Intent(this, TableActivity.class);
+        startActivity(intent);
     }
 
 

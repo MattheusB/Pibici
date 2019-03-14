@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:text="Média Parcial"/>
+                android:text="Resultado"/>
             <TextView
                 android:textColor="#000"
                 android:id="@+id/final_average"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:text="Média Final"/>
+                android:text="Situação"/>
             <TextView
                 android:textColor="#000"
                 android:id="@+id/situation"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:text="Situação"/>
+                android:text="Detalhes"/>
 
         </TableRow>
         <View

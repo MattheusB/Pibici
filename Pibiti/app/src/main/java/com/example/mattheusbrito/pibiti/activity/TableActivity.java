@@ -6,15 +6,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mattheusbrito.pibiti.R;
-import com.example.mattheusbrito.pibiti.record.Release;
-import com.example.mattheusbrito.pibiti.record.ReleaseAdapter;
+import com.example.mattheusbrito.pibiti.release.Release;
+import com.example.mattheusbrito.pibiti.release.ReleaseAdapter;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.pusher.client.Pusher;
-import com.pusher.client.PusherOptions;
-import com.pusher.client.channel.Channel;
-import com.pusher.client.channel.SubscriptionEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,7 +54,6 @@ public class TableActivity extends Activity {
                             Gson gson = new Gson();
                             try {
                                 Release release = gson.fromJson(response.getString(i), Release.class);
-                                System.out.println(response.getString(i)+ "release xavlas");
                                 releaseAdapter.add(release);
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -33,10 +33,10 @@ public class FormActivity extends Activity implements View.OnClickListener {
     private EditText indicator5;
     private EditText indicator6;
 
-   private ConstraintLayout constraintProducaoHoraria = (ConstraintLayout) findViewById(R.id.constraintProducaoHoraria);
-   private ConstraintLayout constraintProducaoReal = (ConstraintLayout) findViewById(R.id.constraintProducaoReal);
-   private ConstraintLayout constraintPerdasQualidade = (ConstraintLayout) findViewById(R.id.constraintPerdasQualidade);
-   private ConstraintLayout constraintEmbalagemUtilizada = (ConstraintLayout) findViewById(R.id.constraintEmbalagemUtilizada);
+   private ConstraintLayout constraintProducaoHoraria;
+   private ConstraintLayout constraintProducaoReal;
+   private ConstraintLayout constraintPerdasQualidade;
+   private ConstraintLayout constraintEmbalagemUtilizada;
 
     private Spinner spinner;
 
@@ -63,6 +63,10 @@ public class FormActivity extends Activity implements View.OnClickListener {
         indicators = ArrayAdapter.createFromResource(this, R.array.indicatorsArray, android.R.layout.simple_spinner_item);
         indicators.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        constraintProducaoHoraria = (ConstraintLayout) findViewById(R.id.constraintProducaoHoraria);
+        constraintProducaoReal = (ConstraintLayout) findViewById(R.id.constraintProducaoReal);
+        constraintPerdasQualidade = (ConstraintLayout) findViewById(R.id.constraintPerdasQualidade);
+        constraintEmbalagemUtilizada = (ConstraintLayout) findViewById(R.id.constraintEmbalagemUtilizada);
 
 
         spinner.setAdapter(indicators);
@@ -75,16 +79,20 @@ public class FormActivity extends Activity implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 switch (position){
                     case 0:
-                        System.out.println("Produção Horária");
+                        setAllGone();
+                        constraintProducaoHoraria.setVisibility(View.VISIBLE);
                         break;
                     case 1:
-                        System.out.println("Produção Real");
+                        setAllGone();
+                        constraintProducaoReal.setVisibility(View.VISIBLE);
                         break;
                     case 2:
-                        System.out.println("Perdas de Qualidade");
+                        setAllGone();
+                        constraintPerdasQualidade.setVisibility(View.VISIBLE);
                         break;
                     case 3:
-                        System.out.println("Embalagem Utilizada");
+                        setAllGone();
+                        constraintEmbalagemUtilizada.setVisibility(View.VISIBLE);
                         break;
                 }
 

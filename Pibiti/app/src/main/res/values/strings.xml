@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Pibiti</string>
+        <string-array name="indicatorsArray">
+            <item>Produção Horária</item>
+            <item>Produção Real</item>
+            <item>Perdas de Qualidade</item>
+            <item>Embalagem utilizada</item>
+        </string-array>
 </resources>

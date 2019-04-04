@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -13,6 +15,7 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mattheusbrito.pibiti.R;
@@ -29,6 +32,11 @@ public class FormActivity extends Activity implements View.OnClickListener {
     private EditText indicator5;
     private EditText indicator6;
 
+    private Spinner spinner;
+
+    private ArrayAdapter<CharSequence> indicators;
+
+
 
     private Button sendButton;
 
@@ -39,12 +47,34 @@ public class FormActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_form);
 
 
-        indicator1 = (EditText) findViewById(R.id.indicator1ID);
+/*        indicator1 = (EditText) findViewById(R.id.indicator1ID);
         indicator2 = (EditText) findViewById(R.id.indicator2ID);
         indicator3 = (EditText) findViewById(R.id.indicador3ID);
-        indicator4 = (EditText) findViewById(R.id.indicador4ID);
+        indicator4 = (EditText) findViewById(R.id.indicador4ID);*/
+
+        spinner = (Spinner) findViewById(R.id.spinnerID);
+        indicators = ArrayAdapter.createFromResource(this, R.array.indicatorsArray, android.R.layout.simple_spinner_item);
+        indicators.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(indicators);
 
         sendButton = (Button) findViewById(R.id.sendButtonID);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+
+        });
+
+
 
         sendButton.setOnClickListener(this);
 
@@ -110,6 +140,8 @@ public class FormActivity extends Activity implements View.OnClickListener {
         Intent intent = new Intent(this, TableActivity.class);
         startActivity(intent);
     }
+
+
 
 
 }

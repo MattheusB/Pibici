@@ -3,6 +3,7 @@ package com.example.mattheusbrito.pibiti.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,6 +33,11 @@ public class FormActivity extends Activity implements View.OnClickListener {
     private EditText indicator5;
     private EditText indicator6;
 
+   private ConstraintLayout constraintProducaoHoraria = (ConstraintLayout) findViewById(R.id.constraintProducaoHoraria);
+   private ConstraintLayout constraintProducaoReal = (ConstraintLayout) findViewById(R.id.constraintProducaoReal);
+   private ConstraintLayout constraintPerdasQualidade = (ConstraintLayout) findViewById(R.id.constraintPerdasQualidade);
+   private ConstraintLayout constraintEmbalagemUtilizada = (ConstraintLayout) findViewById(R.id.constraintEmbalagemUtilizada);
+
     private Spinner spinner;
 
     private ArrayAdapter<CharSequence> indicators;
@@ -53,8 +59,11 @@ public class FormActivity extends Activity implements View.OnClickListener {
         indicator4 = (EditText) findViewById(R.id.indicador4ID);*/
 
         spinner = (Spinner) findViewById(R.id.spinnerID);
+
         indicators = ArrayAdapter.createFromResource(this, R.array.indicatorsArray, android.R.layout.simple_spinner_item);
         indicators.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
 
         spinner.setAdapter(indicators);
 
@@ -64,6 +73,21 @@ public class FormActivity extends Activity implements View.OnClickListener {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                switch (position){
+                    case 0:
+                        System.out.println("Produção Horária");
+                        break;
+                    case 1:
+                        System.out.println("Produção Real");
+                        break;
+                    case 2:
+                        System.out.println("Perdas de Qualidade");
+                        break;
+                    case 3:
+                        System.out.println("Embalagem Utilizada");
+                        break;
+                }
+
 
             }
 
@@ -139,6 +163,14 @@ public class FormActivity extends Activity implements View.OnClickListener {
         sendIndicators();
         Intent intent = new Intent(this, TableActivity.class);
         startActivity(intent);
+    }
+
+
+    private void setAllGone(){
+        constraintProducaoHoraria.setVisibility(View.GONE);
+        constraintProducaoReal.setVisibility(View.GONE);
+        constraintPerdasQualidade.setVisibility(View.GONE);
+        constraintEmbalagemUtilizada.setVisibility(View.GONE);
     }
 
 

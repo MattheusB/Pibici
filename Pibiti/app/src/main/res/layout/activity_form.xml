@@ -40,11 +40,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintProducaoHoraria"
         android:layout_width="345dp"
         android:layout_height="257dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.741"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +91,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintProducaoReal"
         android:layout_width="329dp"
         android:layout_height="237dp"
         android:layout_marginStart="8dp"
@@ -96,6 +99,7 @@
         android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,6 +143,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintPerdasQualidade"
         android:layout_width="329dp"
         android:layout_height="237dp"
         android:layout_marginStart="8dp"
@@ -146,6 +151,7 @@
         android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toStartOf="parent"
@@ -261,6 +267,7 @@
 
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintEmbalagemUtilizada"
         android:layout_width="329dp"
         android:layout_height="237dp"
         android:layout_marginStart="8dp"
@@ -268,6 +275,7 @@
         android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toStartOf="parent"

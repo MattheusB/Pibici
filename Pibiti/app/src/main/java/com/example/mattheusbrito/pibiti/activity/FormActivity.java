@@ -26,12 +26,13 @@ public class FormActivity extends Activity implements View.OnClickListener {
 
     private static final String RELEASE_ENDPOINT = "http://10.0.2.2:3001/lancamentos";
 
-    private EditText indicator1;
-    private EditText indicator2;
-    private EditText indicator3;
-    private EditText indicator4;
-    private EditText indicator5;
-    private EditText indicator6;
+    private EditText producaoHoraria1;
+    private EditText producaoReal1;
+    private EditText retrabalho;
+    private EditText descarte;
+    private EditText sobrepeso;
+    private EditText embalagemPerdida;
+    private EditText embalagemProdutosAcabados;
 
    private ConstraintLayout constraintProducaoHoraria;
    private ConstraintLayout constraintProducaoReal;
@@ -53,10 +54,16 @@ public class FormActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_form);
 
 
-/*        indicator1 = (EditText) findViewById(R.id.indicator1ID);
-        indicator2 = (EditText) findViewById(R.id.indicator2ID);
-        indicator3 = (EditText) findViewById(R.id.indicador3ID);
-        indicator4 = (EditText) findViewById(R.id.indicador4ID);*/
+        producaoHoraria1 = (EditText) findViewById(R.id.producaoHoraria1);
+        producaoReal1 = (EditText) findViewById(R.id.producaoReal1);
+        retrabalho = (EditText) findViewById(R.id.perdasQualidade1);
+        descarte = (EditText) findViewById(R.id.perdasQualidade2);
+        sobrepeso = (EditText) findViewById(R.id.perdasQualidade3);
+        embalagemPerdida = (EditText) findViewById(R.id.embalagemUtilizada1);
+        embalagemProdutosAcabados = (EditText) findViewById(R.id.embalagemUtilizada2);
+
+
+
 
         spinner = (Spinner) findViewById(R.id.spinnerID);
 
@@ -112,19 +119,16 @@ public class FormActivity extends Activity implements View.OnClickListener {
 
     }
 
-    public void sendIndicators() {
+    public void sendProducaoHoraria() {
 
-        String indicator1Value = indicator1.getText().toString();
-        int indicator2Value = Integer.parseInt(indicator2.getText().toString());
-        int indicator3Value = Integer.parseInt(indicator3.getText().toString());
-        int indicator4Value = Integer.parseInt(indicator4.getText().toString());
+        String nomeIndicador = "Producao Horaria";
+        int valorProducaoHoraria = Integer.parseInt(producaoHoraria1.getText().toString());
 
         RequestParams params = new RequestParams();
 
-        params.put("indicador1", indicator1Value);
-        params.put("indicador2", indicator2Value);
-        params.put("indicador3", indicator3Value);
-        params.put("indicador4", indicator4Value);
+        params.put("indicador1", nomeIndicador);
+        params.put("indicador2", valorProducaoHoraria);
+
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -140,10 +144,154 @@ public class FormActivity extends Activity implements View.OnClickListener {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        indicator1.setText("");
-                        indicator2.setText("");
-                        indicator3.setText("");
-                        indicator4.setText("");
+                        producaoHoraria1.setText("");
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(
+                    int statusCode,
+                    cz.msebera.android.httpclient.Header[] headers,
+                    String responseString,
+                    Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Toast.makeText(
+                        getApplicationContext(), "Não pode ser lancado!",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+
+
+    }
+
+    public void sendProducaoReal() {
+
+        String nomeIndicador = "Producao Real";
+        int valorProducaoReal = Integer.parseInt(producaoReal1.getText().toString());
+
+        RequestParams params = new RequestParams();
+
+        params.put("indicador1", nomeIndicador);
+        params.put("indicador2", valorProducaoReal);
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+
+        client.post(RELEASE_ENDPOINT, params, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(
+                    int statusCode,
+                    cz.msebera.android.httpclient.Header[] headers,
+                    JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        producaoReal1.setText("");
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(
+                    int statusCode,
+                    cz.msebera.android.httpclient.Header[] headers,
+                    String responseString,
+                    Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Toast.makeText(
+                        getApplicationContext(), "Não pode ser lancado!",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+
+
+    }
+
+    public void sendEmbalagemUtilizada() {
+
+        String nomeIndicador = "Embalagem Utilizada";
+        int valorEmbalagemPerdida = Integer.parseInt(embalagemPerdida.getText().toString());
+        int valorProdutosAcabados = Integer.parseInt(embalagemProdutosAcabados.getText().toString());
+
+        RequestParams params = new RequestParams();
+
+        params.put("indicador1", nomeIndicador);
+        params.put("indicador2", valorEmbalagemPerdida);
+        params.put("indicador3", valorProdutosAcabados);
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+
+        client.post(RELEASE_ENDPOINT, params, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(
+                    int statusCode,
+                    cz.msebera.android.httpclient.Header[] headers,
+                    JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        embalagemPerdida.setText("");
+                        embalagemProdutosAcabados.setText("");
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(
+                    int statusCode,
+                    cz.msebera.android.httpclient.Header[] headers,
+                    String responseString,
+                    Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Toast.makeText(
+                        getApplicationContext(), "Não pode ser lancado!",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+
+
+    }
+
+    public void sendPerdasQualidade() {
+
+        String nomeIndicador = "Perdas de Qualidade";
+        int valorRetrabalho = Integer.parseInt(retrabalho.getText().toString());
+        int valorDescarte = Integer.parseInt(descarte.getText().toString());
+        int valorSobrepeso = Integer.parseInt(sobrepeso.getText().toString());
+
+        RequestParams params = new RequestParams();
+
+        params.put("indicador1", nomeIndicador);
+        params.put("indicador2", valorRetrabalho);
+        params.put("indicador3", valorDescarte);
+        params.put("indicador4", valorSobrepeso);
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+
+        client.post(RELEASE_ENDPOINT, params, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(
+                    int statusCode,
+                    cz.msebera.android.httpclient.Header[] headers,
+                    JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        retrabalho.setText("");
+                        descarte.setText("");
+                        sobrepeso.setText("");
                     }
                 });
             }
@@ -168,7 +316,15 @@ public class FormActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        sendIndicators();
+        if (constraintProducaoHoraria.getVisibility() == View.VISIBLE){
+            sendProducaoHoraria();
+        }else if (constraintProducaoReal.getVisibility() == View.VISIBLE){
+            sendProducaoReal();
+        } else if (constraintEmbalagemUtilizada.getVisibility() == View.VISIBLE){
+            sendEmbalagemUtilizada();
+        }else if (constraintPerdasQualidade.getVisibility() == View.VISIBLE){
+            sendPerdasQualidade();
+        }
         Intent intent = new Intent(this, TableActivity.class);
         startActivity(intent);
     }

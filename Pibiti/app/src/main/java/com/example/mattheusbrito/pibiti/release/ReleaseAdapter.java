@@ -35,26 +35,80 @@ public class ReleaseAdapter extends BaseAdapter {
         view = view == null ? inflater.inflate(R.layout.release, viewGroup, false) : view;
         final ReleaseViewHolder releaseViewHolder = new ReleaseViewHolder();
 
+
+
+
         releaseViewHolder.indicator1View = view.findViewById(R.id.releaseIndicator1);
         releaseViewHolder.indicator2View = view.findViewById(R.id.releaseIndicator2);
         releaseViewHolder.indicator3View = view.findViewById(R.id.releaseIndicator3);
         releaseViewHolder.indicator4View = view.findViewById(R.id.releaseIndicator4);
 
+
         Release release = (Release) getItem(i);
         releaseViewHolder.indicator1View.setText(release.indicador1);
-        int total = release.indicador2 + release.indicador3 + release.indicador4;
+
+        if (releaseViewHolder.indicator1View.getText().equals("Producao Horaria")){
 
 
-        releaseViewHolder.indicator2View.setText(Integer.toString(total));
+            releaseViewHolder.indicator2View.setText(Integer.toString(release.indicador2));
 
-        if(total > 20){
-            releaseViewHolder.indicator3View.setText("Ruim");
+            if (release.indicador2 > 20){
+                releaseViewHolder.indicator3View.setText("Acima da meta");
+            }
+            else if (release.indicador2 > 10 && release.indicador2 <= 20){
+                releaseViewHolder.indicator3View.setText("Na meta");
+            }else{
+                releaseViewHolder.indicator3View.setText("Abaixo da meta");
+            }
+
         }
-        else if (total > 10 && total <= 20){
-            releaseViewHolder.indicator3View.setText("Médio");
-        }else{
-            releaseViewHolder.indicator3View.setText("Bom");
+        else if(releaseViewHolder.indicator1View.getText().equals("Producao Real")){
+
+            releaseViewHolder.indicator2View.setText(Integer.toString(release.indicador2));
+
+            if (release.indicador2 > 20){
+                releaseViewHolder.indicator3View.setText("Acima da meta");
+            }
+            else if (release.indicador2 > 10 && release.indicador2 <= 20){
+                releaseViewHolder.indicator3View.setText("Na meta");
+            }else{
+                releaseViewHolder.indicator3View.setText("Abaixo da meta");
+            }
         }
+        else if (releaseViewHolder.indicator1View.getText().equals("Embalagem Utilizada")){
+
+
+
+            int total = release.indicador2 + release.indicador3;
+
+            releaseViewHolder.indicator2View.setText(Integer.toString(total));
+
+            if (total > 20){
+                releaseViewHolder.indicator3View.setText("Acima da meta");
+            }
+            else if (total > 10 && total <= 20){
+                releaseViewHolder.indicator3View.setText("Na meta");
+            }else{
+                releaseViewHolder.indicator3View.setText("Abaixo da meta");
+            }
+        }
+        else if (releaseViewHolder.indicator1View.getText().equals("Perdas de Qualidade")){
+
+            int total = release.indicador2 + release.indicador3 + release.indicador4;
+
+            releaseViewHolder.indicator2View.setText(Integer.toString(total));
+
+            if (total > 20){
+                releaseViewHolder.indicator3View.setText("Acima da meta");
+            }
+            else if (total > 10 && total <= 20){
+                releaseViewHolder.indicator3View.setText("Na meta");
+            }else{
+                releaseViewHolder.indicator3View.setText("Abaixo da meta");
+            }
+
+        }
+
 
 
         releaseViewHolder.indicator4View.setText("Detalhes");
@@ -64,7 +118,6 @@ public class ReleaseAdapter extends BaseAdapter {
     private static class ReleaseViewHolder {
 
         public TextView indicator1View;
-
         public TextView indicator2View;
         public TextView indicator3View;
         public TextView indicator4View;

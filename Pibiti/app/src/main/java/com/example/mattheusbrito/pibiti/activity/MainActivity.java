@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
         analysisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AnalysisActivity.class));
+                startActivity(new Intent(MainActivity.this, GraphicActivity.class));
             }
         });
     }

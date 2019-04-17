@@ -50,26 +50,26 @@ public class ReleaseAdapter extends BaseAdapter {
         if (releaseViewHolder.indicator1View.getText().equals("Producao Horaria")){
 
 
-            releaseViewHolder.indicator2View.setText(Integer.toString(release.indicador2));
+            releaseViewHolder.indicator2View.setText(Integer.toString(release.indicador2) + " kg/h");
 
-            if (release.indicador2 > 20){
+            if (release.indicador2 > 100){
                 releaseViewHolder.indicator3View.setText("Acima da meta");
             }
-            else if (release.indicador2 > 10 && release.indicador2 <= 20){
+            else if (release.indicador2 > 90 && release.indicador2 <= 100){
                 releaseViewHolder.indicator3View.setText("Na meta");
             }else{
                 releaseViewHolder.indicator3View.setText("Abaixo da meta");
             }
 
         }
-        else if(releaseViewHolder.indicator1View.getText().equals("Producao Real")){
+        else if(releaseViewHolder.indicator1View.getText().equals("Producao Embalada")){
 
-            releaseViewHolder.indicator2View.setText(Integer.toString(release.indicador2));
+            releaseViewHolder.indicator2View.setText(Integer.toString(release.indicador2) + " kg");
 
-            if (release.indicador2 > 20){
+            if (release.indicador2 > 100){
                 releaseViewHolder.indicator3View.setText("Acima da meta");
             }
-            else if (release.indicador2 > 10 && release.indicador2 <= 20){
+            else if (release.indicador2 > 90 && release.indicador2 <= 100){
                 releaseViewHolder.indicator3View.setText("Na meta");
             }else{
                 releaseViewHolder.indicator3View.setText("Abaixo da meta");
@@ -81,7 +81,7 @@ public class ReleaseAdapter extends BaseAdapter {
 
             int total = release.indicador2 + release.indicador3;
 
-            releaseViewHolder.indicator2View.setText(Integer.toString(total));
+            releaseViewHolder.indicator2View.setText(Integer.toString(total) + " kg");
 
             if (total > 20){
                 releaseViewHolder.indicator3View.setText("Acima da meta");
@@ -96,15 +96,15 @@ public class ReleaseAdapter extends BaseAdapter {
 
             int total = release.indicador2 + release.indicador3 + release.indicador4;
 
-            releaseViewHolder.indicator2View.setText(Integer.toString(total));
+            releaseViewHolder.indicator2View.setText(Integer.toString(total) + " %");
 
             if (total > 20){
-                releaseViewHolder.indicator3View.setText("Acima da meta");
+                releaseViewHolder.indicator3View.setText("Abaixo da meta");
             }
             else if (total > 10 && total <= 20){
                 releaseViewHolder.indicator3View.setText("Na meta");
             }else{
-                releaseViewHolder.indicator3View.setText("Abaixo da meta");
+                releaseViewHolder.indicator3View.setText("Acima da meta");
             }
 
         }

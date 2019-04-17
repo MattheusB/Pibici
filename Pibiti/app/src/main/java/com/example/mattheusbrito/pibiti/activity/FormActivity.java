@@ -27,7 +27,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
     private static final String RELEASE_ENDPOINT = "http://10.0.2.2:3001/lancamentos";
 
     private EditText producaoHoraria1;
-    private EditText producaoReal1;
+    private EditText producaoEmbalada1;
     private EditText retrabalho;
     private EditText descarte;
     private EditText sobrepeso;
@@ -35,7 +35,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
     private EditText embalagemProdutosAcabados;
 
    private ConstraintLayout constraintProducaoHoraria;
-   private ConstraintLayout constraintProducaoReal;
+   private ConstraintLayout constraintProducaoEmbalada;
    private ConstraintLayout constraintPerdasQualidade;
    private ConstraintLayout constraintEmbalagemUtilizada;
 
@@ -55,7 +55,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
 
 
         producaoHoraria1 = (EditText) findViewById(R.id.producaoHoraria1);
-        producaoReal1 = (EditText) findViewById(R.id.producaoReal1);
+        producaoEmbalada1 = (EditText) findViewById(R.id.producaoEmbalada1);
         retrabalho = (EditText) findViewById(R.id.perdasQualidade1);
         descarte = (EditText) findViewById(R.id.perdasQualidade2);
         sobrepeso = (EditText) findViewById(R.id.perdasQualidade3);
@@ -71,7 +71,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
         indicators.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         constraintProducaoHoraria = (ConstraintLayout) findViewById(R.id.constraintProducaoHoraria);
-        constraintProducaoReal = (ConstraintLayout) findViewById(R.id.constraintProducaoReal);
+        constraintProducaoEmbalada = (ConstraintLayout) findViewById(R.id.constraintProducaoEmbalada);
         constraintPerdasQualidade = (ConstraintLayout) findViewById(R.id.constraintPerdasQualidade);
         constraintEmbalagemUtilizada = (ConstraintLayout) findViewById(R.id.constraintEmbalagemUtilizada);
 
@@ -91,7 +91,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
                         break;
                     case 1:
                         setAllGone();
-                        constraintProducaoReal.setVisibility(View.VISIBLE);
+                        constraintProducaoEmbalada.setVisibility(View.VISIBLE);
                         break;
                     case 2:
                         setAllGone();
@@ -166,15 +166,15 @@ public class FormActivity extends Activity implements View.OnClickListener {
 
     }
 
-    public void sendProducaoReal() {
+    public void sendProducaoEmbalada() {
 
-        String nomeIndicador = "Producao Real";
-        int valorProducaoReal = Integer.parseInt(producaoReal1.getText().toString());
+        String nomeIndicador = "Producao Embalada";
+        int valorProducaoEmbalada = Integer.parseInt(producaoEmbalada1.getText().toString());
 
         RequestParams params = new RequestParams();
 
         params.put("indicador1", nomeIndicador);
-        params.put("indicador2", valorProducaoReal);
+        params.put("indicador2", valorProducaoEmbalada);
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -190,7 +190,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        producaoReal1.setText("");
+                        producaoEmbalada1.setText("");
                     }
                 });
             }
@@ -318,8 +318,8 @@ public class FormActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (constraintProducaoHoraria.getVisibility() == View.VISIBLE){
             sendProducaoHoraria();
-        }else if (constraintProducaoReal.getVisibility() == View.VISIBLE){
-            sendProducaoReal();
+        }else if (constraintProducaoEmbalada.getVisibility() == View.VISIBLE){
+            sendProducaoEmbalada();
         } else if (constraintEmbalagemUtilizada.getVisibility() == View.VISIBLE){
             sendEmbalagemUtilizada();
         }else if (constraintPerdasQualidade.getVisibility() == View.VISIBLE){
@@ -332,7 +332,7 @@ public class FormActivity extends Activity implements View.OnClickListener {
 
     private void setAllGone(){
         constraintProducaoHoraria.setVisibility(View.GONE);
-        constraintProducaoReal.setVisibility(View.GONE);
+        constraintProducaoEmbalada.setVisibility(View.GONE);
         constraintPerdasQualidade.setVisibility(View.GONE);
         constraintEmbalagemUtilizada.setVisibility(View.GONE);
     }

@@ -54,14 +54,15 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:text="Situação"/>
+
             <TextView
-                android:textColor="#000"
                 android:id="@+id/situation"
-                android:fontFamily="serif"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Detalhes"/>
+                android:fontFamily="serif"
+                android:text="Detalhes"
+                android:textColor="#000" />
 
         </TableRow>
         <View

@@ -19,7 +19,6 @@
         <activity android:name=".activity.FormActivity" />
         <activity android:name=".activity.GraphicActivity" />
         <activity android:name=".activity.TableActivity" />
-        <activity android:name=".activity.AnalysisActivity" />
         <activity android:name=".activity.MainActivity"></activity>
     </application>
 

@@ -2,27 +2,30 @@ package com.example.mattheusbrito.pibiti.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.mattheusbrito.pibiti.R;
 import com.example.mattheusbrito.pibiti.release.Release;
 import com.example.mattheusbrito.pibiti.release.ReleaseAdapter;
-import com.google.gson.Gson;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.util.ArrayList;
+import com.example.mattheusbrito.pibiti.release.ReleaseSet;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class TableActivity extends Activity {
 
-    private static final String RELEASE_ENDPOINT = "http://10.0.2.2:3001/lancamentos";
+
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseRef = database.getReference();
+
 
 
     private ReleaseAdapter releaseAdapter;
+
 
 
     @Override
@@ -35,51 +38,26 @@ public class TableActivity extends Activity {
         releasesView.setAdapter(releaseAdapter);
 
 
-        AsyncHttpClient client = new AsyncHttpClient();
 
-        client.get(RELEASE_ENDPOINT,new JsonHttpResponseHandler() {
-
+        databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onSuccess(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    final JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (int i = 0; i < response.length(); i++) {
-
-
-                            Gson gson = new Gson();
-                            try {
-                                Release release = gson.fromJson(response.getString(i), Release.class);
-
-                                releaseAdapter.add(release);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                            releasesView.setSelection(releaseAdapter.getCount() - 1);
-                        }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ReleaseSet value = dataSnapshot.getValue(ReleaseSet.class);
+                if (value != null){
+                for (Release release:value.getLancamentos()){
+                    releaseAdapter.add(release);
                     }
-                });
+                }
+
+                Log.d("key", "Value is: " + value);
             }
 
             @Override
-            public void onFailure(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    String responseString,
-                    Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Toast.makeText(
-                        getApplicationContext(), "Não pode ser lancado!",
-                        Toast.LENGTH_LONG
-                ).show();
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("key", "Failed to read value.", error.toException());
             }
         });
-
 
 
 

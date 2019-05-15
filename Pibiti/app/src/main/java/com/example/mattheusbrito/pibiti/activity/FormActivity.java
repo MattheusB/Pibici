@@ -10,6 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.mattheusbrito.pibiti.release.Release;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -21,12 +24,12 @@ import android.widget.Toast;
 
 import com.example.mattheusbrito.pibiti.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
 public class FormActivity extends Activity implements View.OnClickListener {
 
-    private static final String RELEASE_ENDPOINT = "http://10.0.2.2:3001/lancamentos";
 
     private EditText producaoHoraria1;
     private EditText producaoEmbalada1;
@@ -36,7 +39,13 @@ public class FormActivity extends Activity implements View.OnClickListener {
     private EditText embalagemPerdida;
     private EditText embalagemProdutosAcabados;
 
-   private ConstraintLayout constraintProducaoHoraria;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseRef = database.getReference();
+
+    ArrayList<Release> lancamentos = new ArrayList<>();
+
+
+    private ConstraintLayout constraintProducaoHoraria;
    private ConstraintLayout constraintProducaoEmbalada;
    private ConstraintLayout constraintPerdasQualidade;
    private ConstraintLayout constraintEmbalagemUtilizada;
@@ -129,44 +138,11 @@ public class FormActivity extends Activity implements View.OnClickListener {
         String nomeIndicador = "Producao Horaria";
         int valorProducaoHoraria = Integer.parseInt(producaoHoraria1.getText().toString());
 
-        RequestParams params = new RequestParams();
-
-        params.put("indicador1", nomeIndicador);
-        params.put("indicador2", valorProducaoHoraria);
-
-
-        AsyncHttpClient client = new AsyncHttpClient();
+        Release release = new Release(nomeIndicador, valorProducaoHoraria);
+        lancamentos.add(release);
+        databaseRef.child("lancamentos").setValue(lancamentos);
 
 
-        client.post(RELEASE_ENDPOINT, params, new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        producaoHoraria1.setText("");
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    String responseString,
-                    Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Toast.makeText(
-                        getApplicationContext(), "Não pode ser lancado!",
-                        Toast.LENGTH_LONG
-                ).show();
-            }
-        });
 
 
     }
@@ -176,43 +152,9 @@ public class FormActivity extends Activity implements View.OnClickListener {
         String nomeIndicador = "Producao Embalada";
         int valorProducaoEmbalada = Integer.parseInt(producaoEmbalada1.getText().toString());
 
-        RequestParams params = new RequestParams();
-
-        params.put("indicador1", nomeIndicador);
-        params.put("indicador2", valorProducaoEmbalada);
-
-        AsyncHttpClient client = new AsyncHttpClient();
-
-
-        client.post(RELEASE_ENDPOINT, params, new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        producaoEmbalada1.setText("");
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    String responseString,
-                    Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Toast.makeText(
-                        getApplicationContext(), "Não pode ser lancado!",
-                        Toast.LENGTH_LONG
-                ).show();
-            }
-        });
+        Release release = new Release(nomeIndicador, valorProducaoEmbalada);
+        lancamentos.add(release);
+        databaseRef.child("lancamentos").setValue(lancamentos);
 
 
     }
@@ -223,45 +165,9 @@ public class FormActivity extends Activity implements View.OnClickListener {
         int valorEmbalagemPerdida = Integer.parseInt(embalagemPerdida.getText().toString());
         int valorProdutosAcabados = Integer.parseInt(embalagemProdutosAcabados.getText().toString());
 
-        RequestParams params = new RequestParams();
-
-        params.put("indicador1", nomeIndicador);
-        params.put("indicador2", valorEmbalagemPerdida);
-        params.put("indicador3", valorProdutosAcabados);
-
-        AsyncHttpClient client = new AsyncHttpClient();
-
-
-        client.post(RELEASE_ENDPOINT, params, new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        embalagemPerdida.setText("");
-                        embalagemProdutosAcabados.setText("");
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    String responseString,
-                    Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Toast.makeText(
-                        getApplicationContext(), "Não pode ser lancado!",
-                        Toast.LENGTH_LONG
-                ).show();
-            }
-        });
+        Release release = new Release(nomeIndicador, valorEmbalagemPerdida, valorProdutosAcabados);
+        lancamentos.add(release);
+        databaseRef.child("lancamentos").setValue(lancamentos);
 
 
     }
@@ -273,47 +179,9 @@ public class FormActivity extends Activity implements View.OnClickListener {
         int valorDescarte = Integer.parseInt(descarte.getText().toString());
         int valorSobrepeso = Integer.parseInt(sobrepeso.getText().toString());
 
-        RequestParams params = new RequestParams();
-
-        params.put("indicador1", nomeIndicador);
-        params.put("indicador2", valorRetrabalho);
-        params.put("indicador3", valorDescarte);
-        params.put("indicador4", valorSobrepeso);
-
-        AsyncHttpClient client = new AsyncHttpClient();
-
-
-        client.post(RELEASE_ENDPOINT, params, new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        retrabalho.setText("");
-                        descarte.setText("");
-                        sobrepeso.setText("");
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(
-                    int statusCode,
-                    cz.msebera.android.httpclient.Header[] headers,
-                    String responseString,
-                    Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Toast.makeText(
-                        getApplicationContext(), "Não pode ser lancado!",
-                        Toast.LENGTH_LONG
-                ).show();
-            }
-        });
+        Release release = new Release(nomeIndicador, valorRetrabalho, valorDescarte, valorSobrepeso);
+        lancamentos.add(release);
+        databaseRef.child("lancamentos").setValue(lancamentos);
 
 
     }

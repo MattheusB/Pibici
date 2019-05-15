@@ -10,8 +10,6 @@ import android.widget.TextView;
 import com.example.mattheusbrito.pibiti.R;
 import com.example.mattheusbrito.pibiti.mock.Mock;
 
-import java.util.List;
-
 public class ReleaseAdapter extends BaseAdapter {
 
     private Context releaseContext;

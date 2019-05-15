@@ -16,6 +16,25 @@ public class Release {
         this.indicador5 = calendar.getTime().getHours();
     }
 
+    public Release(String nomeIndicador, int valorRetrabalho, int valorDescarte, int valorSobrepeso) {
+        this.indicador1 = nomeIndicador;
+        this.indicador2 = valorRetrabalho;
+        this.indicador3 = valorDescarte;
+        this.indicador4 = valorSobrepeso;
+
+    }
+
+    public Release(String nomeIndicador, int valorEmbalagemPerdida, int valorProdutosAcabados) {
+        this.indicador1 = nomeIndicador;
+        this.indicador2 = valorEmbalagemPerdida;
+        this.indicador3 = valorProdutosAcabados;
+    }
+
+    public Release(String nomeIndicador, int valorProducaoEmbalada) {
+        this.indicador1 = nomeIndicador;
+        this.indicador2 = valorProducaoEmbalada;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -42,4 +61,43 @@ public class Release {
         return  result;
     }
 
+    public String getIndicador1() {
+        return indicador1;
+    }
+
+    public void setIndicador1(String indicador1) {
+        this.indicador1 = indicador1;
+    }
+
+    public Integer getIndicador2() {
+        return indicador2;
+    }
+
+    public void setIndicador2(Integer indicador2) {
+        this.indicador2 = indicador2;
+    }
+
+    public Integer getIndicador3() {
+        return indicador3;
+    }
+
+    public void setIndicador3(Integer indicador3) {
+        this.indicador3 = indicador3;
+    }
+
+    public Integer getIndicador4() {
+        return indicador4;
+    }
+
+    public void setIndicador4(Integer indicador4) {
+        this.indicador4 = indicador4;
+    }
+
+    public Integer getIndicador5() {
+        return indicador5;
+    }
+
+    public void setIndicador5(Integer indicador5) {
+        this.indicador5 = indicador5;
+    }
 }

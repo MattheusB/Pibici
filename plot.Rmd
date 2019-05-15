@@ -1,0 +1,16 @@
+---
+title: "Gráficos Pibiti"
+output: html_notebook
+---
+
+```{r}
+knitr::opts_chunk$set(warning = FALSE)
+library(plotly)
+library(dplyr)
+
+```
+
+```{r}
+dadosValidacao <- read.csv("/Users/mattheusbrito/Downloads/Pibiti/Velho/Artigo/dadosvalidacao.csv")
+```
+

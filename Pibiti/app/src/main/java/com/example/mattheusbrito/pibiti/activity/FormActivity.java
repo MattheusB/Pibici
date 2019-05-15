@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.mattheusbrito.pibiti.R;
 
+import java.util.Calendar;
+
 
 public class FormActivity extends Activity implements View.OnClickListener {
 
@@ -42,8 +44,6 @@ public class FormActivity extends Activity implements View.OnClickListener {
     private Spinner spinner;
 
     private ArrayAdapter<CharSequence> indicators;
-
-
 
     private Button sendButton;
 
@@ -79,6 +79,11 @@ public class FormActivity extends Activity implements View.OnClickListener {
         spinner.setAdapter(indicators);
 
         sendButton = (Button) findViewById(R.id.sendButtonID);
+
+
+
+
+
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

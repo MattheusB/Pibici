@@ -8,21 +8,20 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.mattheusbrito.pibiti.R;
+import com.example.mattheusbrito.pibiti.mock.Mock;
 
 import java.util.List;
 
 public class ReleaseAdapter extends BaseAdapter {
 
     private Context releaseContext;
-    private List<Release> releaseList;
 
-    public ReleaseAdapter(Context context, List<Release> releases) {
-        releaseList = releases;
+    public ReleaseAdapter(Context context) {
         releaseContext = context;
     }
 
     public void add(Release release) {
-        releaseList.add(release);
+        Mock.add(release);
         notifyDataSetChanged();
     }
 
@@ -125,11 +124,11 @@ public class ReleaseAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return releaseList.size();
+        return Mock.size();
     }
     @Override
     public Object getItem(int i) {
-        return releaseList.get(i);
+        return Mock.get(i);
     }
 
     @Override

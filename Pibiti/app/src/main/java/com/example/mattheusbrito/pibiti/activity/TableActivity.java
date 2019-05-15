@@ -30,7 +30,7 @@ public class TableActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
 
-        releaseAdapter = new ReleaseAdapter(this, new ArrayList<Release>());
+        releaseAdapter = new ReleaseAdapter(this);
         final ListView releasesView = (ListView) findViewById(R.id.releaseListID);
         releasesView.setAdapter(releaseAdapter);
 
@@ -54,6 +54,7 @@ public class TableActivity extends Activity {
                             Gson gson = new Gson();
                             try {
                                 Release release = gson.fromJson(response.getString(i), Release.class);
+
                                 releaseAdapter.add(release);
                             } catch (JSONException e) {
                                 e.printStackTrace();

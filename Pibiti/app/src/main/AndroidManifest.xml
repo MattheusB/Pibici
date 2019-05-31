@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mattheusbrito.pibiti">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.SplashActivity"></activity>
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +22,7 @@
         <activity android:name=".activity.FormActivity" />
         <activity android:name=".activity.GraphicActivity" />
         <activity android:name=".activity.TableActivity" />
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
